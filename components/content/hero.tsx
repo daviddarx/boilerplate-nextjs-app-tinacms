@@ -1,6 +1,6 @@
 import { CustomMarkdown } from '@/components/ui/custom-markdown';
 import { PageBlocksHero } from '@/tina/__generated__/types';
-import { classNames } from 'tinacms';
+import classNames from 'classnames';
 
 export function Hero(props: PageBlocksHero) {
   return (
@@ -12,7 +12,9 @@ export function Hero(props: PageBlocksHero) {
           <a
             key={i}
             href={link?.href}
-            className={'inline-block px-12 py-2 rounded-full border border-gray-200'}
+            className={classNames('inline-block px-12 py-2 rounded-full border border-gray-200', {
+              'bg-black border-black text-white': link?.style === 'primary',
+            })}
           >
             {link?.label}
           </a>
