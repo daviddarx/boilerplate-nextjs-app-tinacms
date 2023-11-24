@@ -10,14 +10,14 @@ blocks:
       non erat lacinia aliquam. Nullam venenatis, risus vitae imperdiet
       suscipit, nisi mauris sagittis eros, in imperdiet nisl ex ut urna.
     links:
-      - href: '#3'
-        label: Third link
-        style: primary
       - href: '#1'
         label: First Link
         style: primary
       - href: '#2'
         label: Second Link
+        style: secondary
+      - href: '#3'
+        label: Third link
         style: secondary
     _template: hero
 ---
