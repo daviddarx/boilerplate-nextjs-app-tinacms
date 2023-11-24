@@ -1,5 +1,5 @@
 ---
-title: Home page
+title: Homepage
 blocks:
   - title: Hero title
     description: >

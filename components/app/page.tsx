@@ -1,18 +1,23 @@
+'use client';
+
 import { Hero } from '@/components/content/hero';
 import { PageQuery } from '@/tina/__generated__/types';
+import { useTina } from 'tinacms/dist/react';
 
 export function PageComponent(props: {
   data: PageQuery;
   variables: { relativePath: string };
   query: string;
 }) {
+  const data = useTina(props);
+
   return (
     <div>
-      <h1>{props.data.page.title}</h1>
-      {props.data.page.blocks?.map((block) => {
+      <h1>{data.data.page.title}</h1>
+      {data.data.page.blocks?.map((block, i) => {
         switch (block?.__typename) {
           case 'PageBlocksHero': {
-            return <Hero {...block} />;
+            return <Hero {...block} key={i} />;
           }
         }
       })}

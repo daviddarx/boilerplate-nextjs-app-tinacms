@@ -1,5 +1,14 @@
 import { defineConfig } from 'tinacms';
 
+const slugify = (value = 'no-value') => {
+  return `${value
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .normalize('NFD')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\u0300-\u036f]/g, '')}`;
+};
+
 export default defineConfig({
   branch: '',
   clientId: '',
@@ -15,6 +24,20 @@ export default defineConfig({
         label: 'Page',
         path: 'content/pages',
         format: 'md',
+        ui: {
+          router: (props) => {
+            if (props.document._sys.filename === 'home') {
+              return '/';
+            } else {
+              return `/${props.document._sys.filename}`;
+            }
+          },
+          filename: {
+            slugify: (values) => {
+              return slugify(values.title);
+            },
+          },
+        },
         fields: [
           { name: 'title', label: 'Title', type: 'string' },
           {
