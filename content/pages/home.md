@@ -20,5 +20,21 @@ blocks:
         label: Third link
         style: secondary
     _template: hero
+  - title: Features
+    description: >
+      Nullam venenatis, risus vitae imperdiet suscipit, nisi mauris sagittis
+      eros, in imperdiet nisl ex ut urna.
+    feature:
+      - title: Feature 1
+        image: /uploads/test-image.png
+        description: >-
+          Nullam venenatis, risus vitae imperdiet suscipit, nisi mauris sagittis
+          eros, in imperdiet nisl ex ut urna.
+      - title: Feature 2
+        image: /uploads/test-image.png
+        description: >-
+          Nullam venenatis, risus vitae imperdiet suscipit, nisi mauris sagittis
+          eros, in imperdiet nisl ex ut urna.
+    _template: featureList
 ---
 

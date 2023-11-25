@@ -1,5 +1,6 @@
 'use client';
 
+import { FeatureList } from '@/components/content/feature-list';
 import { Hero } from '@/components/content/hero';
 import { PageQuery } from '@/tina/__generated__/types';
 import { useTina } from 'tinacms/dist/react';
@@ -18,6 +19,9 @@ export function PageComponent(props: {
         switch (block?.__typename) {
           case 'PageBlocksHero': {
             return <Hero {...block} key={i} />;
+          }
+          case 'PageBlocksFeatureList': {
+            return <FeatureList {...block} key={i} />;
           }
         }
       })}
