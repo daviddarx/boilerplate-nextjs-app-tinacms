@@ -1,5 +1,6 @@
 import { CustomMarkdown } from '@/components/ui/custom-markdown';
 import { PageBlocksFeatureList } from '@/tina/__generated__/types';
+import Image from 'next/image';
 import { tinaField } from 'tinacms/dist/react';
 
 export function FeatureList(props: PageBlocksFeatureList) {
@@ -11,10 +12,13 @@ export function FeatureList(props: PageBlocksFeatureList) {
       <div data-tina-field={tinaField(props, 'description')}>
         <CustomMarkdown content={props.description} />
       </div>
-      <ul className='flex items-start gap-12'>
+      <ul className='grid grid-cols-2 gap-12'>
         {props.feature?.map((feature, i) => (
           <li key={i} data-tina-field={tinaField(feature!, 'title')}>
             <h3>{feature?.title}</h3>
+            {feature?.image && (
+              <Image src={feature.image} alt={feature.title} width={100} height={100} />
+            )}
             <p>{feature?.description}</p>
           </li>
         ))}

@@ -94,7 +94,7 @@ export default defineConfig({
                     type: 'object',
                     list: true,
                     fields: [
-                      { name: 'title', label: 'Title', type: 'string' },
+                      { name: 'title', label: 'Title', type: 'string', required: true },
                       { name: 'image', label: 'Image', type: 'image' },
                       {
                         name: 'description',
