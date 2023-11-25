@@ -74,6 +74,11 @@ export default defineConfig({
                         required: true,
                       },
                     ],
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.label };
+                      },
+                    },
                   },
                 ],
               },
@@ -100,6 +105,11 @@ export default defineConfig({
                         },
                       },
                     ],
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.title };
+                      },
+                    },
                   },
                 ],
               },
