@@ -109,6 +109,10 @@ export default defineConfig({
                       itemProps: (item) => {
                         return { label: item.title };
                       },
+                      defaultItem: {
+                        title: 'Feature title',
+                        description: 'Feature description',
+                      },
                     },
                   },
                 ],
