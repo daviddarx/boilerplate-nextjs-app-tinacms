@@ -17,7 +17,7 @@ export function FeatureList(props: PageBlocksFeatureList) {
           <li key={i} data-tina-field={tinaField(feature!, 'title')}>
             <h3>{feature?.title}</h3>
             {feature?.image && (
-              <Image src={feature.image} alt={feature.title} width={100} height={100} />
+              <Image src={feature.image} alt={feature.title} width={1920} height={1080} />
             )}
             <p>{feature?.description}</p>
           </li>
