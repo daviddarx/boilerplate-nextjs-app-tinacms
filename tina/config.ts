@@ -27,7 +27,7 @@ export default defineConfig({
     collections: [
       {
         name: 'page',
-        label: 'Page',
+        label: 'Pages',
         path: 'content/pages',
         format: 'md',
         ui: {
@@ -45,7 +45,7 @@ export default defineConfig({
           },
         },
         fields: [
-          { name: 'title', label: 'Title', type: 'string' },
+          { name: 'title', label: 'Title', type: 'string', isTitle: true, required: true },
           {
             name: 'blocks',
             label: 'Blocks',
@@ -119,6 +119,46 @@ export default defineConfig({
               },
             ],
           },
+        ],
+      },
+      {
+        name: 'category',
+        label: 'Categories',
+        path: 'content/categories',
+        fields: [
+          {
+            name: 'title',
+            label: 'Title',
+            type: 'string',
+            isTitle: true,
+            required: true,
+          },
+        ],
+        ui: {
+          filename: {
+            slugify: (values) => {
+              return slugify(values.title);
+            },
+          },
+        },
+      },
+      {
+        name: 'post',
+        label: 'Posts',
+        path: 'content/posts',
+        format: 'md',
+        ui: {
+          filename: {
+            slugify: (values) => {
+              return slugify(values.title);
+            },
+          },
+        },
+        fields: [
+          { name: 'title', label: 'Title', type: 'string', isTitle: true, required: true },
+          { name: 'category', label: 'Category', type: 'reference', collections: ['category'] },
+          { name: 'image', label: 'Image', type: 'image' },
+          { name: 'body', label: 'Body', type: 'rich-text' },
         ],
       },
     ],
