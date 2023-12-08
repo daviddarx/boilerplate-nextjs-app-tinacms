@@ -2,5 +2,147 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Responsive Spacers */
+  --spacer-8: theme('spacing.6');
+  --spacer-12: theme('spacing.10');
+  --spacer-16: theme('spacing.12');
+  --spacer-20: theme('spacing.14');
+  --spacer-24: theme('spacing.16');
+  --spacer-32: theme('spacing.20');
+  --spacer-40: theme('spacing.24');
+  --spacer-48: theme('spacing.24');
+  --spacer-56: theme('spacing.28');
+  --spacer-64: theme('spacing.32');
+  --spacer-80: theme('spacing.48');
+  --spacer-96: theme('spacing.56');
+  --spacer-120: theme('spacing.64');
+  --gutter: var(--spacer-40);
 
+  @screen lg {
+    --spacer-8: theme('spacing.8');
+    --spacer-12: theme('spacing.12');
+    --spacer-16: theme('spacing.16');
+    --spacer-20: theme('spacing.20');
+    --spacer-24: theme('spacing.24');
+    --spacer-32: theme('spacing.32');
+    --spacer-40: theme('spacing.40');
+    --spacer-48: theme('spacing.48');
+    --spacer-56: theme('spacing.56');
+    --spacer-64: theme('spacing.64');
+    --spacer-80: theme('spacing.80');
+    --spacer-96: theme('spacing.96');
+    --spacer-120: theme('spacing.120');
+  }
+}
 
+@layer base {
+  body {
+    @apply text-base lg:text-xl;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    @apply font-semibold uppercase;
+  }
+
+  h1,
+  .h1 {
+    @apply text-4xl xl:text-6xl;
+  }
+
+  h2,
+  .h2 {
+    @apply text-3xl xl:text-5xl;
+  }
+
+  h3,
+  .h3 {
+    @apply text-2xl xl:text-4xl;
+  }
+
+  h4,
+  .h4 {
+    @apply text-xl xl:text-3xl;
+  }
+
+  h5,
+  .h5 {
+    @apply text-xl xl:text-2xl;
+  }
+
+  h6,
+  .h6 {
+    @apply text-xl xl:text-2xl;
+  }
+}
+
+@layer utilities {
+  .first-mt-0 {
+    & > *:first-child {
+      @apply mt-0;
+    }
+  }
+
+  .last-mb-0 {
+    & > *:last-child {
+      @apply mb-0;
+    }
+  }
+}
+
+@layer components {
+  .text-container {
+    @apply first-mt-0 last-mb-0;
+
+    & > {
+      & p,
+      & ul,
+      & ol,
+      & address {
+        @apply mb-spacer-20;
+      }
+
+      & div {
+        @apply mb-spacer-32;
+      }
+
+      & h1,
+      & .h1 {
+        @apply mb-spacer-32 mt-spacer-64;
+      }
+
+      & h2,
+      & .h2 {
+        @apply mb-spacer-24 mt-spacer-48;
+      }
+
+      & h3,
+      & .h3 {
+        @apply mb-spacer-12 mt-spacer-24;
+      }
+
+      & h4,
+      & .h4 {
+        @apply mb-spacer-8 mt-spacer-16;
+      }
+
+      & ol,
+      & ul {
+        li:last-child {
+          @apply last-mb-0;
+        }
+      }
+    }
+  }
+}

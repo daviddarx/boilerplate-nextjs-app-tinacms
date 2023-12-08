@@ -14,17 +14,19 @@ export function PageComponent(props: {
 
   return (
     <div>
-      <h1>{data.data.page.title}</h1>
-      {data.data.page.blocks?.map((block, i) => {
-        switch (block?.__typename) {
-          case 'PageBlocksHero': {
-            return <Hero {...block} key={i} />;
+      <h1 className='sr-only'>{data.data.page.title}</h1>
+      <div className='flex flex-col gap-spacer-120'>
+        {data.data.page.blocks?.map((block, i) => {
+          switch (block?.__typename) {
+            case 'PageBlocksHero': {
+              return <Hero {...block} key={i} />;
+            }
+            case 'PageBlocksFeatureList': {
+              return <FeatureList {...block} key={i} />;
+            }
           }
-          case 'PageBlocksFeatureList': {
-            return <FeatureList {...block} key={i} />;
-          }
-        }
-      })}
+        })}
+      </div>
     </div>
   );
 }

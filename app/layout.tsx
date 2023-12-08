@@ -1,9 +1,9 @@
 import './globals.css';
 import classNames from 'classnames';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Space_Grotesk } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Space_Grotesk({ weight: ['400', '600'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Boilerplate NextJS & TinaCMS',
@@ -13,7 +13,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={classNames('p-20', inter.className)}>{children}</body>
+      <body className={classNames('w-full h-full', font.className)}>
+        <div className='lg:grid lg:grid-cols-2'>
+          <header>
+            <h2 className='lg:fixed lg:top-0 lg:left-0 p-gutter'>Logo</h2>
+          </header>
+          <main className='p-gutter lg:px-0'>{children}</main>
+        </div>
+      </body>
     </html>
   );
 }
