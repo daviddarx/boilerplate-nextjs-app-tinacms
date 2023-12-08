@@ -16,8 +16,8 @@ export function Hero(props: PageBlocksHero) {
             <a
               key={i}
               href={link?.href}
-              className={classNames('inline-block px-12 py-2 rounded-full border border-gray-200', {
-                'bg-black border-black text-white': link?.style === 'primary',
+              className={classNames('button', {
+                'button--secondary': link?.style === 'secondary',
               })}
               data-tina-field={tinaField(link!, 'label')}
             >
