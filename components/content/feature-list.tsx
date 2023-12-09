@@ -1,9 +1,9 @@
-import { CustomMarkdown } from '@/components/ui/custom-markdown';
+import CustomMarkdown from '@/components/ui/custom-markdown';
 import { PageBlocksFeatureList } from '@/tina/__generated__/types';
 import Image from 'next/image';
 import { tinaField } from 'tinacms/dist/react';
 
-export function FeatureList(props: PageBlocksFeatureList) {
+export default function FeatureList(props: PageBlocksFeatureList) {
   return (
     <section className='border-t border-black pt-gutter lg:pr-gutter'>
       <div className='text-container'>

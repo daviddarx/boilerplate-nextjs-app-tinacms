@@ -1,11 +1,11 @@
 'use client';
 
-import { FeatureList } from '@/components/content/feature-list';
-import { Hero } from '@/components/content/hero';
+import FeatureList from '@/components/content/feature-list';
+import Hero from '@/components/content/hero';
 import { PageQuery } from '@/tina/__generated__/types';
 import { useTina } from 'tinacms/dist/react';
 
-export function PageComponent(props: {
+export default function PageComponent(props: {
   data: PageQuery;
   variables: { relativePath: string };
   query: string;

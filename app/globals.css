@@ -103,11 +103,11 @@
 
 @layer components {
   .button {
-    @apply inline-block rounded-full border border-black bg-black px-16 py-4 font-bold text-white;
+    @apply inline-block rounded-full border border-black px-16 py-4 font-bold uppercase;
   }
 
-  .button--secondary {
-    @apply bg-white text-black;
+  .button--primary {
+    @apply bg-black text-white;
   }
 
   .text-container {

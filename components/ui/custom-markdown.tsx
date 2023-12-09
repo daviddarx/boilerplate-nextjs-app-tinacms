@@ -1,7 +1,9 @@
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { TinaMarkdownContent } from 'tinacms/dist/rich-text';
 
-export function CustomMarkdown(props: { content: TinaMarkdownContent | TinaMarkdownContent[] }) {
+export default function CustomMarkdown(props: {
+  content: TinaMarkdownContent | TinaMarkdownContent[];
+}) {
   return (
     <div className='text-container'>
       <TinaMarkdown
