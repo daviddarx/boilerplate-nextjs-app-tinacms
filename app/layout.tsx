@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className={classNames('w-full h-full', font.className)}>
+      <body className={classNames('h-full w-full', font.className)}>
         <div className='lg:grid lg:grid-cols-2'>
           <header>
-            <h2 className='lg:fixed lg:top-0 lg:left-0 p-gutter'>
+            <h2 className='p-gutter lg:fixed lg:left-0 lg:top-0'>
               <Link href='/'>Logo</Link>
             </h2>
             <MainNav />

@@ -13,7 +13,7 @@ export default function FeatureList(props: PageBlocksFeatureList) {
         </div>
       </div>
 
-      <ul className='grid grid-cols-2 gap-12 mt-gutter'>
+      <ul className='mt-gutter grid grid-cols-2 gap-12'>
         {props.feature?.map((feature, i) => (
           <li key={i} data-tina-field={tinaField(feature!, 'title')}>
             {feature?.image && (
