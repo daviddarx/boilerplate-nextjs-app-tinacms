@@ -2,10 +2,10 @@ import './globals.css';
 import MainNav from '@/components/app/main-nav';
 import classNames from 'classnames';
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
+import { Bricolage_Grotesque } from 'next/font/google';
 import Link from 'next/link';
 
-const font = Space_Grotesk({ weight: ['400', '600'], subsets: ['latin'] });
+const font = Bricolage_Grotesque({ weight: ['400', '600'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Boilerplate NextJS & TinaCMS',

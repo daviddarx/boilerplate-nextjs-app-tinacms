@@ -53,7 +53,7 @@
   .h5,
   h6,
   .h6 {
-    @apply font-semibold uppercase;
+    @apply font-normal;
   }
 
   h1,
