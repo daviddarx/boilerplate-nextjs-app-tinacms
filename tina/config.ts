@@ -19,8 +19,8 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: 'uploads',
       publicFolder: 'public',
+      mediaRoot: 'uploads',
     },
   },
   schema: {
