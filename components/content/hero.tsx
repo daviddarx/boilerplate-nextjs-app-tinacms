@@ -8,23 +8,27 @@ export default function Hero(props: PageBlocksHero) {
     <section className='lg:pr-gutter'>
       <div className='text-container'>
         <h2 data-tina-field={tinaField(props, 'title')}>{props.title}</h2>
-        <div data-tina-field={tinaField(props, 'description')}>
-          <CustomMarkdown content={props.description} />
-        </div>
-        <div className='flex items-start gap-12'>
-          {props.links?.map((link, i) => (
-            <a
-              key={i}
-              href={link?.href}
-              className={classNames('button', {
-                'button--primary': link?.style === 'primary',
-              })}
-              data-tina-field={tinaField(link!, 'label')}
-            >
-              {link?.label}
-            </a>
-          ))}
-        </div>
+        {props.description && (
+          <div data-tina-field={tinaField(props, 'description')}>
+            <CustomMarkdown content={props.description} />
+          </div>
+        )}
+        {props.links && (
+          <div className='flex items-start gap-12'>
+            {props.links?.map((link, i) => (
+              <a
+                key={i}
+                href={link?.href}
+                className={classNames('button', {
+                  'button--primary': link?.style === 'primary',
+                })}
+                data-tina-field={tinaField(link!, 'label')}
+              >
+                {link?.label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
