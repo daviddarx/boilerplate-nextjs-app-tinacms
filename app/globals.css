@@ -111,8 +111,6 @@
   }
 
   .text-container {
-    @apply first-mt-0 last-mb-0;
-
     & > {
       & p,
       & ul,
@@ -152,5 +150,7 @@
         }
       }
     }
+
+    @apply first-mt-0 last-mb-0;
   }
 }
