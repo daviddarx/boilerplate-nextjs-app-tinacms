@@ -159,7 +159,13 @@ export default defineConfig({
         },
         fields: [
           { name: 'title', label: 'Title', type: 'string', isTitle: true, required: true },
-          { name: 'category', label: 'Category', type: 'reference', collections: ['category'] },
+          {
+            name: 'category',
+            label: 'Category',
+            type: 'reference',
+            collections: ['category'],
+            required: true,
+          },
           { name: 'image', label: 'Image', type: 'image' },
           { name: 'body', label: 'Body', type: 'rich-text' },
         ],

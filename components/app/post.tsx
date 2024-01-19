@@ -20,9 +20,7 @@ export default function PostComponent(props: {
         <h1 data-tina-field={tinaField(post, 'title')} className='h2'>
           {post.title}
         </h1>
-        {post.category && (
-          <div data-tina-field={tinaField(post, 'category')}>{post.category.title}</div>
-        )}
+        <div data-tina-field={tinaField(post, 'category')}>{post.category.title}</div>
       </header>
       <div className='mt-gutter'>
         {post.image && (
