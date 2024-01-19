@@ -11,12 +11,13 @@ export default function PageComponent(props: {
   query: string;
 }) {
   const data = useTina(props);
+  const { page } = data.data;
 
   return (
     <div>
-      <h1 className='sr-only'>{data.data.page.title}</h1>
+      <h1 className='sr-only'>{page.title}</h1>
       <div className='flex flex-col gap-spacer-120'>
-        {data.data.page.blocks?.map((block, i) => {
+        {page.blocks?.map((block, i) => {
           switch (block?.__typename) {
             case 'PageBlocksHero': {
               return <Hero {...block} key={i} />;

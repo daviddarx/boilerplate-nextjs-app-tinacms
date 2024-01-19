@@ -12,33 +12,27 @@ export default function PostComponent(props: {
   query: string;
 }) {
   const data = useTina(props);
+  const { post } = data.data;
 
   return (
     <div>
       <header className='text-container'>
-        <h1 data-tina-field={tinaField(data.data.post, 'title')} className='h2'>
-          {data.data.post.title}
+        <h1 data-tina-field={tinaField(post, 'title')} className='h2'>
+          {post.title}
         </h1>
-        {data.data.post.category && (
-          <div data-tina-field={tinaField(data.data.post, 'category')}>
-            {data.data.post.category.title}
-          </div>
+        {post.category && (
+          <div data-tina-field={tinaField(post, 'category')}>{post.category.title}</div>
         )}
       </header>
       <div className='mt-gutter'>
-        {data.data.post.image && (
-          <div data-tina-field={tinaField(data.data.post, 'image')}>
-            <Image
-              src={data.data.post.image}
-              alt={data.data.post.title}
-              width={1920}
-              height={1080}
-            />
+        {post.image && (
+          <div data-tina-field={tinaField(post, 'image')}>
+            <Image src={post.image} alt={post.title} width={1920} height={1080} />
           </div>
         )}
-        {data.data.post.body && (
-          <div data-tina-field={tinaField(data.data.post, 'body')}>
-            <CustomMarkdown content={data.data.post.body} className={'mt-gutter pr-gutter'} />
+        {post.body && (
+          <div data-tina-field={tinaField(post, 'body')}>
+            <CustomMarkdown content={post.body} className={'mt-gutter pr-gutter'} />
           </div>
         )}
       </div>
