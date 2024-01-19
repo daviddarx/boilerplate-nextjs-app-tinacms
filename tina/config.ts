@@ -148,6 +148,9 @@ export default defineConfig({
         path: 'content/posts',
         format: 'md',
         ui: {
+          router: (props) => {
+            return `/blog/${props.document._sys.filename}`;
+          },
           filename: {
             slugify: (values) => {
               return slugify(values.title);
