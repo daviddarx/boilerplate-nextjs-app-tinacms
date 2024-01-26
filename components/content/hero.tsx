@@ -14,7 +14,7 @@ export default function Hero(props: PageBlocksHero) {
           </div>
         )}
         {props.links && (
-          <div className='flex items-start gap-12'>
+          <div className='flex flex-col items-start gap-12 md:flex-row'>
             {props.links?.map((link, i) => (
               <a
                 key={i}
