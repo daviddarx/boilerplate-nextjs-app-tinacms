@@ -1,5 +1,7 @@
 ---
 links:
+  - label: Contact
+    link: /contact
   - label: Home
     link: /
   - label: About
