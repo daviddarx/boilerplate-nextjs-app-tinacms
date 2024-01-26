@@ -122,6 +122,36 @@ export default defineConfig({
         ],
       },
       {
+        name: 'navigation',
+        label: 'Navigation',
+        path: 'content/navigation',
+        format: 'md',
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+          global: true /* Hide it in the side-bar of the detail pages admin */,
+        },
+        fields: [
+          {
+            name: 'links',
+            label: 'Links',
+            type: 'object',
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item.label };
+              },
+            },
+            fields: [
+              { name: 'label', label: 'Label', type: 'string', required: true },
+              { name: 'link', label: 'Link', type: 'string', required: true },
+            ],
+          },
+        ],
+      },
+      {
         name: 'category',
         label: 'Categories',
         path: 'content/categories',

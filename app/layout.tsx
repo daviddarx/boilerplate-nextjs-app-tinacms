@@ -1,5 +1,4 @@
 import './globals.css';
-import MainNav from '@/components/app/main-nav';
 import classNames from 'classnames';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <h2 className='p-gutter lg:fixed lg:left-0 lg:top-0'>
               <Link href='/'>Logo</Link>
             </h2>
-            <MainNav />
           </header>
           <main className='p-gutter lg:px-0'>{children}</main>
         </div>
