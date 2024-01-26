@@ -63,6 +63,11 @@ export default defineConfig({
                     label: 'Links',
                     type: 'object',
                     list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.label };
+                      },
+                    },
                     fields: [
                       { name: 'href', label: 'Href', type: 'string', required: true },
                       { name: 'label', label: 'Label', type: 'string', required: true },
@@ -74,11 +79,6 @@ export default defineConfig({
                         required: true,
                       },
                     ],
-                    ui: {
-                      itemProps: (item) => {
-                        return { label: item.label };
-                      },
-                    },
                   },
                 ],
               },
@@ -93,6 +93,15 @@ export default defineConfig({
                     label: 'Feature',
                     type: 'object',
                     list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.title };
+                      },
+                      defaultItem: {
+                        title: 'Feature title',
+                        description: 'Feature description',
+                      },
+                    },
                     fields: [
                       { name: 'title', label: 'Title', type: 'string', required: true },
                       { name: 'image', label: 'Image', type: 'image' },
@@ -105,15 +114,6 @@ export default defineConfig({
                         },
                       },
                     ],
-                    ui: {
-                      itemProps: (item) => {
-                        return { label: item.title };
-                      },
-                      defaultItem: {
-                        title: 'Feature title',
-                        description: 'Feature description',
-                      },
-                    },
                   },
                 ],
               },
@@ -125,6 +125,13 @@ export default defineConfig({
         name: 'category',
         label: 'Categories',
         path: 'content/categories',
+        ui: {
+          filename: {
+            slugify: (values) => {
+              return slugify(values.title);
+            },
+          },
+        },
         fields: [
           {
             name: 'title',
@@ -134,13 +141,6 @@ export default defineConfig({
             required: true,
           },
         ],
-        ui: {
-          filename: {
-            slugify: (values) => {
-              return slugify(values.title);
-            },
-          },
-        },
       },
       {
         name: 'post',
