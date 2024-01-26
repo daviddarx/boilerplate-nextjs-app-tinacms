@@ -8,7 +8,7 @@ blocks:
 
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac nibh
       non erat lacinia aliquam. Nullam venenatis, risus vitae imperdiet
-      suscipit, nisi mauris sagittis eros, in imperdiet nisl ex ut urna.
+      suscipit, nisi mauris sagittis eros, ina imperdiet nisl ex ut urna.
     links:
       - href: '#1'
         label: First Link
