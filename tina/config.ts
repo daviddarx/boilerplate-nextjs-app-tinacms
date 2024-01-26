@@ -10,9 +10,9 @@ const slugify = (value = 'no-value') => {
 };
 
 export default defineConfig({
-  branch: '',
-  clientId: '',
-  token: '',
+  branch: 'main',
+  clientId: '5da5b003-4338-4ec2-acc1-a268bb829e8f',
+  token: 'a32794db148d85b99347084b0d23f0014c8bf9ba',
   build: {
     publicFolder: 'public',
     outputFolder: 'admin',
