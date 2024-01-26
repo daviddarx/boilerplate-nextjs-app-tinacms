@@ -4,9 +4,9 @@ links:
     link: /
   - label: About
     link: /about
-  - label: Contact
-    link: /contact
   - label: Blog
     link: /blog
+  - label: Contact
+    link: /contact
 ---
 
