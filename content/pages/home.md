@@ -6,7 +6,7 @@ blocks:
       Rich text description with **custom bold**, *italic*, etc.
 
 
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac nibh
+      Lorem ipsum dolor sit amet, consectetur eadipiscing elit. Nullam ac nibh
       non erat lacinia aliquam. Nullam venenatis, risus vitae imperdiet
       suscipit, nisi mauris sagittis erosa, ina imperdiet nisl ex ut urna.
     links:
