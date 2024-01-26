@@ -1,3 +1,11 @@
+# Here below we're creating custom queries to add the navigation
+# to the existing queries, in order to have it available on the
+# app root level at the page load. This way it's possible to include
+# it in the useTine hooks, to have it dynamicly updated in the admin.
+
+# It wouln't be necessarily needed, but let's keep this to have an example
+# of merged queries based on __generated__/queries.gql
+
 query pageAndNav($relativePath: String!) {
   page(relativePath: $relativePath) {
     ... on Document {
@@ -12,6 +20,94 @@ query pageAndNav($relativePath: String!) {
       id
     }
     ...PageParts
+  }
+  navigation(relativePath: "navigation.md") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...NavigationParts
+  }
+}
+
+query postAndNav($relativePath: String!) {
+  post(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PostParts
+  }
+  navigation(relativePath: "navigation.md") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...NavigationParts
+  }
+}
+
+query postConnectionAndNav(
+  $before: String
+  $after: String
+  $first: Float
+  $last: Float
+  $sort: String
+  $filter: PostFilter
+) {
+  postConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PostParts
+      }
+    }
   }
   navigation(relativePath: "navigation.md") {
     ... on Document {

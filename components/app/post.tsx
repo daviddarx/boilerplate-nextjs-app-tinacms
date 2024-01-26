@@ -1,21 +1,23 @@
 'use client';
 
 import CustomMarkdown from '../ui/custom-markdown';
-import { PostQuery } from '@/tina/__generated__/types';
+import Navigation from '@/components/ui/navigation';
+import { PostAndNavQuery } from '@/tina/__generated__/types';
 import Image from 'next/image';
 import { useTina } from 'tinacms/dist/react';
 import { tinaField } from 'tinacms/dist/react';
 
 export default function PostComponent(props: {
-  data: PostQuery;
+  data: PostAndNavQuery;
   variables: { relativePath: string };
   query: string;
 }) {
   const data = useTina(props);
-  const { post } = data.data;
+  const { post, navigation } = data.data;
 
   return (
     <div>
+      <Navigation {...navigation} />
       <header className='text-container'>
         <h1 data-tina-field={tinaField(post, 'title')} className='h2'>
           {post.title}

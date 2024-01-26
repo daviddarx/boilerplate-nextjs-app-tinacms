@@ -131,7 +131,7 @@ export default defineConfig({
             create: false,
             delete: false,
           },
-          global: true /* Hide it in the side-bar of the detail pages admin */,
+          global: true /* Prioritize it back in the side-bar of the detail pages admin */,
         },
         fields: [
           {

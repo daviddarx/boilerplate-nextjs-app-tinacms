@@ -1,21 +1,25 @@
 'use client';
 
-import { PostConnectionQuery } from '@/tina/__generated__/types';
+import Navigation from '@/components/ui/navigation';
+import { PostConnectionAndNavQuery } from '@/tina/__generated__/types';
 import Link from 'next/link';
 import React from 'react';
 import { useTina } from 'tinacms/dist/react';
 import { tinaField } from 'tinacms/dist/react';
 
 export default function PostsComponent(props: {
-  data: PostConnectionQuery;
+  data: PostConnectionAndNavQuery;
   variables: object;
   query: string;
 }) {
   const { data } = useTina(props);
   const posts = data.postConnection.edges;
+  const { navigation } = data;
 
   return (
     <React.Fragment>
+      <Navigation {...navigation} />
+      <h1 className='sr-only'>Blog</h1>
       {posts && posts?.length > 0 && (
         <ul>
           {posts.map((edge) => {
