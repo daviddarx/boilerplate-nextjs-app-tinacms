@@ -21,7 +21,7 @@ export default function PostsComponent(props: {
       <Navigation {...navigation} />
       <h1 className='sr-only'>Blog</h1>
       {posts && posts?.length > 0 && (
-        <ul className='mt-[200vh]'>
+        <ul>
           {posts.map((edge) => {
             const post = edge?.node;
 
