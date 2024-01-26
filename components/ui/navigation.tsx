@@ -1,5 +1,6 @@
 import ActiveLink from '@/components/ui/active-link';
 import { PageAndNavQuery } from '@/tina/__generated__/types';
+import { tinaField } from 'tinacms/dist/react';
 
 export default function Navigation(props: PageAndNavQuery['navigation']) {
   return (
@@ -8,7 +9,7 @@ export default function Navigation(props: PageAndNavQuery['navigation']) {
       <ul className='flex gap-spacer-16 lg:flex-col'>
         {props.links &&
           props.links.map((link) => (
-            <li key={link!.link}>
+            <li key={link!.link} data-tina-field={link && tinaField(link, 'label')}>
               <ActiveLink href={link!.link} className='button' activeClassName='button--primary'>
                 {link?.label}
               </ActiveLink>
