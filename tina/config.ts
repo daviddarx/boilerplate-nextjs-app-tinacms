@@ -1,4 +1,3 @@
-import { title } from 'process';
 import { defineConfig } from 'tinacms';
 
 const slugify = (value = 'no-value') => {
