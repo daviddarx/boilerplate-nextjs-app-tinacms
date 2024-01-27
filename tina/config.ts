@@ -58,14 +58,14 @@ export default defineConfig({
                 label: 'Hero',
                 ui: {
                   itemProps: (item) => {
-                    return { label: item.title };
+                    return { label: `Hero: ${item.title}` };
                   },
                   defaultItem: {
                     title: 'Hero title',
                   },
                 },
                 fields: [
-                  { name: 'title', label: 'Title', type: 'string' },
+                  { name: 'title', label: 'Title', type: 'string', required: true },
                   { name: 'description', label: 'Description', type: 'rich-text' },
                   {
                     name: 'links',
@@ -96,14 +96,14 @@ export default defineConfig({
                 label: 'Feature-List',
                 ui: {
                   itemProps: (item) => {
-                    return { label: item.title };
+                    return { label: `Feature-List: ${item.title}` };
                   },
                   defaultItem: {
                     title: 'Feature-List title',
                   },
                 },
                 fields: [
-                  { name: 'title', label: 'Title', type: 'string' },
+                  { name: 'title', label: 'Title', type: 'string', required: true },
                   { name: 'description', label: 'Description', type: 'rich-text' },
                   {
                     name: 'feature',
