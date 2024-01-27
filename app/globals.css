@@ -149,6 +149,25 @@
           @apply last-mb-0;
         }
       }
+
+      ol {
+        @apply list-decimal;
+      }
+
+      ul {
+        @apply list-disc;
+      }
+
+      ul,
+      ol {
+        @apply list-inside;
+
+        & li {
+          & div {
+            @apply inline-block;
+          }
+        }
+      }
     }
 
     @apply first-mt-0 last-mb-0;

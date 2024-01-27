@@ -3,21 +3,24 @@ title: About
 blocks:
   - title: About
     description: >
-      Ut arcu risus, commodo quis nisi et, interdum pulvinar velit. Sed in orci
-      justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at
-      mauris id libero finibus eleifend eget nec urna. 
+      **Ut arcu risus, commodo quis nisi et, interdum pulvinar velit. Sed in
+      orci justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+      at mauris id libero finibus eleifen**d eget nec urna.
 
 
       Phasellus maximus neque id ex ullamcorper volutpat. In cursus quam sit
       amet urna ultrices, ac dapibus nunc vestibulum. Aliquam pellentesque,
       lorem et molestie tristique, dui arcu malesuada nisi, vel vulputate augue
       odio lobortis tortor. Praesent eget felis scelerisque, scelerisque libero
-      vitae, varius ipsum. 
+      vitae, varius ipsum.
 
 
-      Donec egestas lorem euismod libero aliquam convallis. Donec vel ornare
+      *Donec egestas lorem euismod libero aliquam convallis. Donec vel ornare
       dui. In ut dapibus nisl, id varius quam. Quisque eget scelerisque nisi,
-      sollicitudin gravida lectus. 
+      sollicitudin gravida lectus.*
+
+
+      ![](/uploads/test-image.png)
 
 
       Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris
@@ -28,13 +31,13 @@ blocks:
       orci justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
       at mauris id libero finibus eleifend eget nec urna. Phasellus maximus
       neque id ex ullamcorper volutpat. In cursus quam sit amet urna ultrices,
-      ac dapibus nunc vestibulum. 
+      ac dapibus nunc vestibulum.
 
 
       Aliquam pellentesque, lorem et molestie tristique, dui arcu malesuada
       nisi, vel vulputate augue odio lobortis tortor. Praesent eget felis
       scelerisque, scelerisque libero vitae, varius ipsum. Donec egestas lorem
-      euismod libero aliquam convallis. 
+      euismod libero aliquam convallis.
 
 
       * Aliquam pellentesque
@@ -42,6 +45,19 @@ blocks:
       * Scelerisque libero vitae
 
       * Ulputate augue odio
+
+
+      Aliquam pellentesque, lorem et molestie tristique, dui arcu malesuada
+      nisi, vel vulputate augue odio lobortis tortor. Praesent eget felis
+      scelerisque, scelerisque libero vitae, varius ipsum. Donec egestas lorem
+      euismod libero aliquam convallis.
+
+
+      1. Aliquam pellentesque
+
+      2. Scelerisque libero vitae
+
+      3. Ulputate augue odio
     _template: hero
 ---
 
