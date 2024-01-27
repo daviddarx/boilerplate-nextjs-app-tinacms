@@ -5,7 +5,7 @@ import { tinaField } from 'tinacms/dist/react';
 
 export default function FeatureList(props: PageBlocksFeatureList) {
   return (
-    <section className='border-t border-black pt-gutter'>
+    <section className='pt-spacer-40 first:pt-0 '>
       <div className='text-container'>
         <h2 data-tina-field={tinaField(props, 'title')}>{props.title}</h2>
         {props.description && (

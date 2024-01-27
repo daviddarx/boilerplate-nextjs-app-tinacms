@@ -18,7 +18,7 @@ export default function PageComponent(props: {
     <div>
       <Navigation {...navigation} />
       <h1 className='sr-only'>{page.title}</h1>
-      <div className='flex flex-col gap-spacer-120'>
+      <div className='mb-spacer-120 flex flex-col gap-spacer-120 divide-y-2 divide-black'>
         {page.blocks?.map((block, i) => {
           switch (block?.__typename) {
             case 'PageBlocksHero': {
