@@ -6,7 +6,7 @@ export default function Navigation(props: PageAndNavQuery['navigation']) {
   return (
     <nav className='mb-40 lg:fixed lg:bottom-0 lg:left-0 lg:mb-0 lg:p-gutter'>
       <h2 className='sr-only'>Navigation</h2>
-      <ul className='flex gap-spacer-16 lg:flex-col'>
+      <ul className='flex flex-wrap gap-spacer-16 lg:flex-col'>
         {props.links &&
           props.links.map((link) => (
             <li key={link!.link} data-tina-field={link && tinaField(link, 'label')}>
