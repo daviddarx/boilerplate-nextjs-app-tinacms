@@ -1,3 +1,4 @@
+import { title } from 'process';
 import { defineConfig } from 'tinacms';
 
 const slugify = (value = 'no-value') => {
@@ -55,6 +56,14 @@ export default defineConfig({
               {
                 name: 'hero',
                 label: 'Hero',
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.title };
+                  },
+                  defaultItem: {
+                    title: 'Hero Title',
+                  },
+                },
                 fields: [
                   { name: 'title', label: 'Title', type: 'string' },
                   { name: 'description', label: 'Description', type: 'rich-text' },
@@ -84,7 +93,15 @@ export default defineConfig({
               },
               {
                 name: 'featureList',
-                label: 'Feature List',
+                label: 'Feature-List',
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.title };
+                  },
+                  defaultItem: {
+                    title: 'Feature-List title',
+                  },
+                },
                 fields: [
                   { name: 'title', label: 'Title', type: 'string' },
                   { name: 'description', label: 'Description', type: 'rich-text' },
