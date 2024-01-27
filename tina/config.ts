@@ -61,7 +61,7 @@ export default defineConfig({
                     return { label: item.title };
                   },
                   defaultItem: {
-                    title: 'Hero Title',
+                    title: 'Hero title',
                   },
                 },
                 fields: [
