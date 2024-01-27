@@ -115,7 +115,8 @@
       & p,
       & ul,
       & ol,
-      & address {
+      & address,
+      & blockquote {
         @apply mb-spacer-20;
       }
 
@@ -150,15 +151,15 @@
         }
       }
 
-      ol {
+      & ol {
         @apply list-decimal;
       }
 
-      ul {
+      & ul {
         @apply list-disc;
       }
 
-      ul,
+      & ul,
       ol {
         @apply list-inside;
 
@@ -168,6 +169,18 @@
           }
         }
       }
+    }
+
+    & a {
+      @apply underline;
+    }
+
+    & blockquote {
+      @apply rounded-lg bg-gray-100 p-spacer-20;
+    }
+
+    & code {
+      @apply inline-block rounded-lg bg-gray-100 px-6;
     }
 
     @apply first-mt-0 last-mb-0;
