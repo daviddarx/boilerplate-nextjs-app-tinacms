@@ -1,4 +1,5 @@
 import { defineConfig } from 'tinacms';
+import type { Template } from 'tinacms';
 
 const slugify = (value = 'no-value') => {
   return `${value
@@ -8,6 +9,30 @@ const slugify = (value = 'no-value') => {
     .replace(/[^\w\s-]/g, '')
     .replace(/[\u0300-\u036f]/g, '')}`;
 };
+
+const richTextTemplates: Template[] = [
+  {
+    name: 'CTA',
+    label: 'CTA',
+    fields: [
+      {
+        name: 'url',
+        label: 'URL',
+        type: 'string',
+      },
+      {
+        name: 'label',
+        label: 'Label',
+        type: 'string',
+      },
+      {
+        name: 'blank',
+        label: 'External link',
+        type: 'boolean',
+      },
+    ],
+  },
+];
 
 export default defineConfig({
   branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || 'main',
@@ -69,29 +94,7 @@ export default defineConfig({
                     name: 'description',
                     label: 'Description',
                     type: 'rich-text',
-                    templates: [
-                      {
-                        name: 'CTA',
-                        label: 'CTA',
-                        fields: [
-                          {
-                            name: 'url',
-                            label: 'URL',
-                            type: 'string',
-                          },
-                          {
-                            name: 'label',
-                            label: 'Label',
-                            type: 'string',
-                          },
-                          {
-                            name: 'blank',
-                            label: 'External link',
-                            type: 'boolean',
-                          },
-                        ],
-                      },
-                    ],
+                    templates: richTextTemplates,
                   },
                   {
                     name: 'links',
@@ -130,7 +133,12 @@ export default defineConfig({
                 },
                 fields: [
                   { name: 'title', label: 'Title', type: 'string', required: true },
-                  { name: 'description', label: 'Description', type: 'rich-text' },
+                  {
+                    name: 'description',
+                    label: 'Description',
+                    type: 'rich-text',
+                    templates: richTextTemplates,
+                  },
                   {
                     name: 'feature',
                     label: 'Feature',
