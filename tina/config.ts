@@ -227,7 +227,7 @@ export default defineConfig({
         name: 'post',
         label: 'Posts',
         path: 'content/posts',
-        format: 'md',
+        format: 'mdx',
         ui: {
           router: (props) => {
             return `/blog/${props.document._sys.filename}`;
@@ -248,7 +248,7 @@ export default defineConfig({
             required: true,
           },
           { name: 'image', label: 'Image', type: 'image' },
-          { name: 'body', label: 'Body', type: 'rich-text' },
+          { name: 'body', label: 'Body', type: 'rich-text', templates: richTextTemplates },
         ],
       },
     ],

@@ -10,7 +10,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const result = await client.queries.postAndNav({ relativePath: `${params.slug}.md` });
+  const result = await client.queries.postAndNav({ relativePath: `${params.slug}.mdx` });
 
   return <PostComponent {...result} />;
 }
