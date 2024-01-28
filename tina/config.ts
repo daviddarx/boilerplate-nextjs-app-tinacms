@@ -29,7 +29,7 @@ export default defineConfig({
         name: 'page',
         label: 'Pages',
         path: 'content/pages',
-        format: 'md',
+        format: 'mdx',
         ui: {
           router: (props) => {
             if (props.document._sys.filename === 'home') {
@@ -65,7 +65,34 @@ export default defineConfig({
                 },
                 fields: [
                   { name: 'title', label: 'Title', type: 'string', required: true },
-                  { name: 'description', label: 'Description', type: 'rich-text' },
+                  {
+                    name: 'description',
+                    label: 'Description',
+                    type: 'rich-text',
+                    templates: [
+                      {
+                        name: 'CTA',
+                        label: 'CTA',
+                        fields: [
+                          {
+                            name: 'url',
+                            label: 'URL',
+                            type: 'string',
+                          },
+                          {
+                            name: 'label',
+                            label: 'Label',
+                            type: 'string',
+                          },
+                          {
+                            name: 'blank',
+                            label: 'External link',
+                            type: 'boolean',
+                          },
+                        ],
+                      },
+                    ],
+                  },
                   {
                     name: 'links',
                     label: 'Links',
