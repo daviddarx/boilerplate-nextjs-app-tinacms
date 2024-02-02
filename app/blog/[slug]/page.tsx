@@ -1,6 +1,8 @@
 import PostComponent from '@/components/app/post';
 import client from '@/tina/__generated__/client';
 
+export const revalidate = 10;
+
 export async function generateStaticParams() {
   const result = await client.queries.postConnection();
 
