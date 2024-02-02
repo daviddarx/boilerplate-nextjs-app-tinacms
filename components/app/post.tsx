@@ -14,6 +14,11 @@ export default function PostComponent(props: {
 }) {
   const data = useTina(props);
   const { post, navigation } = data.data;
+  const date = new Intl.DateTimeFormat('de-CH', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(post.createdAt));
 
   return (
     <div>
@@ -22,7 +27,9 @@ export default function PostComponent(props: {
         <h1 data-tina-field={tinaField(post, 'title')} className='h2'>
           {post.title}
         </h1>
-        <div data-tina-field={tinaField(post, 'category')}>{post.category.title}</div>
+        <div data-tina-field={tinaField(post, 'category')}>
+          {date} - {post.category.title}
+        </div>
       </header>
       <div className='mt-gutter'>
         {post.image && (

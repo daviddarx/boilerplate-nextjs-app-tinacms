@@ -228,6 +228,12 @@ export default defineConfig({
         label: 'Posts',
         path: 'content/posts',
         format: 'mdx',
+        defaultItem: () => {
+          return {
+            createdAt: new Date(),
+            published: true,
+          };
+        },
         ui: {
           router: (props) => {
             return `/blog/${props.document._sys.filename}`;
@@ -240,6 +246,21 @@ export default defineConfig({
         },
         fields: [
           { name: 'title', label: 'Title', type: 'string', isTitle: true, required: true },
+          {
+            name: 'createdAt',
+            label: 'Created at',
+            type: 'datetime',
+            required: true,
+            ui: {
+              dateFormat: 'MMMM DD YYYY',
+              timeFormat: 'HH:mm',
+            },
+          },
+          {
+            name: 'published',
+            label: 'Published',
+            type: 'boolean',
+          },
           {
             name: 'category',
             label: 'Category',
