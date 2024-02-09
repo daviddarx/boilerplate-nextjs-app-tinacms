@@ -27,8 +27,9 @@ export default function PostComponent(props: {
         <h1 data-tina-field={tinaField(post, 'title')} className='h2'>
           {post.title}
         </h1>
-        <div data-tina-field={tinaField(post, 'category')}>
-          {date} - {post.category.title}
+        <div>
+          <span data-tina-field={tinaField(post, 'createdAt')}>{date}</span> -{' '}
+          <span data-tina-field={tinaField(post, 'category')}>{post.category.title}</span>
         </div>
       </header>
       <div className='mt-gutter'>
