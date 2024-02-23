@@ -1,5 +1,7 @@
 import PageComponent from '@/components/app/page';
 import client from '@/tina/__generated__/client';
+import { PageResult } from '@/tina/types';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 10;
 
@@ -12,16 +14,22 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const pageResult = await client.queries.pageAndNav({ relativePath: `${params.slug}.mdx` });
+  let pageResult: PageResult;
+  let hasPostListBlock: boolean | undefined;
 
-  const hasPostListBlock = pageResult.data.page.blocks?.some(
-    (block) => block?.__typename === 'PageBlocksPostList',
-  );
+  try {
+    pageResult = await client.queries.pageAndNav({ relativePath: `${params.slug}.mdx` });
+    hasPostListBlock = pageResult.data.page.blocks?.some(
+      (block) => block?.__typename === 'PageBlocksPostList',
+    );
+  } catch (error) {
+    return notFound();
+  }
 
   if (hasPostListBlock) {
-    const postResult = await client.queries.postConnection();
-    return <PageComponent pageProps={{ ...pageResult }} postsProps={{ ...postResult }} />;
+    const postsResult = await client.queries.postConnection();
+    return <PageComponent pageProps={{ ...pageResult! }} postsProps={{ ...postsResult }} />;
   } else {
-    return <PageComponent pageProps={{ ...pageResult }} />;
+    return <PageComponent pageProps={{ ...pageResult! }} />;
   }
 }

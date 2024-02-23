@@ -1,5 +1,7 @@
 import PostComponent from '@/components/app/post';
 import client from '@/tina/__generated__/client';
+import { PostResult } from '@/tina/types';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 10;
 
@@ -12,7 +14,13 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const result = await client.queries.postAndNav({ relativePath: `${params.slug}.mdx` });
+  let postResult: PostResult;
 
-  return <PostComponent {...result} />;
+  try {
+    postResult = await client.queries.postAndNav({ relativePath: `${params.slug}.mdx` });
+  } catch (error) {
+    return notFound();
+  }
+
+  return <PostComponent {...postResult} />;
 }

@@ -3,15 +3,12 @@
 import CustomMarkdown from '../ui/custom-markdown';
 import Navigation from '@/components/ui/navigation';
 import { PostAndNavQuery } from '@/tina/__generated__/types';
+import { PostResult } from '@/tina/types';
 import Image from 'next/image';
 import { useTina } from 'tinacms/dist/react';
 import { tinaField } from 'tinacms/dist/react';
 
-export default function PostComponent(props: {
-  data: PostAndNavQuery;
-  variables: { relativePath: string };
-  query: string;
-}) {
+export default function PostComponent(props: PostResult) {
   const data = useTina(props);
   const { post, navigation } = data.data;
   const date = new Intl.DateTimeFormat('de-CH', {
