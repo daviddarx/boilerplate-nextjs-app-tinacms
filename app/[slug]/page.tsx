@@ -1,4 +1,4 @@
-import PageComponent from '@/components/app/page';
+import Page from '@/components/app/page';
 import client from '@/tina/__generated__/client';
 import { PageResult } from '@/tina/types';
 import { notFound } from 'next/navigation';
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function ServerPage({ params }: { params: { slug: string } }) {
   let pageResult: PageResult;
   let hasPostListBlock: boolean | undefined;
 
@@ -28,8 +28,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   if (hasPostListBlock) {
     const postsResult = await client.queries.postConnection();
-    return <PageComponent pageProps={{ ...pageResult! }} postsProps={{ ...postsResult }} />;
+    return <Page pageProps={{ ...pageResult! }} postsProps={{ ...postsResult }} />;
   } else {
-    return <PageComponent pageProps={{ ...pageResult! }} />;
+    return <Page pageProps={{ ...pageResult! }} />;
   }
 }

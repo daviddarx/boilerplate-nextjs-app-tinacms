@@ -7,7 +7,7 @@ import Navigation from '@/components/ui/navigation';
 import { PageResult, PostsResult } from '@/tina/types';
 import { useTina } from 'tinacms/dist/react';
 
-export default function PageComponent(props: { pageProps: PageResult; postsProps?: PostsResult }) {
+export default function Page(props: { pageProps: PageResult; postsProps?: PostsResult }) {
   const pageData = useTina(props.pageProps);
   const { page, navigation } = pageData.data;
 

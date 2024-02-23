@@ -1,4 +1,4 @@
-import PostComponent from '@/components/app/post';
+import Post from '@/components/app/post';
 import client from '@/tina/__generated__/client';
 import { PostResult } from '@/tina/types';
 import { notFound } from 'next/navigation';
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function ServerPage({ params }: { params: { slug: string } }) {
   let postResult: PostResult;
 
   try {
@@ -22,5 +22,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return notFound();
   }
 
-  return <PostComponent {...postResult} />;
+  return <Post {...postResult} />;
 }
