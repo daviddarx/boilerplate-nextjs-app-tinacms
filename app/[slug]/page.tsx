@@ -12,7 +12,16 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const result = await client.queries.pageAndNav({ relativePath: `${params.slug}.mdx` });
+  const pageResult = await client.queries.pageAndNav({ relativePath: `${params.slug}.mdx` });
 
-  return <PageComponent {...result} />;
+  const hasPostListBlock = pageResult.data.page.blocks?.some(
+    (block) => block?.__typename === 'PageBlocksPostList',
+  );
+
+  if (hasPostListBlock) {
+    const postResult = await client.queries.postConnection();
+    return <PageComponent pageProps={{ ...pageResult }} postsProps={{ ...postResult }} />;
+  } else {
+    return <PageComponent pageProps={{ ...pageResult }} />;
+  }
 }

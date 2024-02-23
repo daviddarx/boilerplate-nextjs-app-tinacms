@@ -2,17 +2,14 @@
 
 import FeatureList from '@/components/content/feature-list';
 import Hero from '@/components/content/hero';
+import PostList from '@/components/content/post-list';
 import Navigation from '@/components/ui/navigation';
-import { PageAndNavQuery } from '@/tina/__generated__/types';
+import { PageResult, PostResult } from '@/tina/types';
 import { useTina } from 'tinacms/dist/react';
 
-export default function PageComponent(props: {
-  data: PageAndNavQuery;
-  variables: { relativePath: string };
-  query: string;
-}) {
-  const data = useTina(props);
-  const { page, navigation } = data.data;
+export default function PageComponent(props: { pageProps: PageResult; postsProps?: PostResult }) {
+  const pageData = useTina(props.pageProps);
+  const { page, navigation } = pageData.data;
 
   return (
     <div>
@@ -26,6 +23,9 @@ export default function PageComponent(props: {
             }
             case 'PageBlocksFeatureList': {
               return <FeatureList {...block} key={i} />;
+            }
+            case 'PageBlocksPostList': {
+              return <PostList blockProps={{ ...block }} postsProps={props.postsProps!} key={i} />;
             }
           }
         })}

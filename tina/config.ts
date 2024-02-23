@@ -1,6 +1,8 @@
 import { defineConfig } from 'tinacms';
 import type { Template } from 'tinacms';
 
+export const postsRoute = '/blog';
+
 const slugify = (value = 'no-value') => {
   return `${value
     .toLowerCase()
@@ -168,6 +170,29 @@ export default defineConfig({
                   },
                 ],
               },
+              {
+                name: 'postList',
+                label: 'Post-List',
+                ui: {
+                  itemProps: (item) => {
+                    return { label: `Post-List: ${item.title}` };
+                  },
+                  defaultItem: {
+                    title: 'Post-List title',
+                    hideTitle: false,
+                  },
+                },
+                fields: [
+                  { name: 'title', label: 'Title', type: 'string', isTitle: true, required: true },
+                  { name: 'hideTitle', label: 'Hide Title?', type: 'boolean' },
+                  {
+                    name: 'description',
+                    label: 'Description',
+                    type: 'rich-text',
+                    templates: richTextTemplates,
+                  },
+                ],
+              },
             ],
           },
         ],
@@ -236,7 +261,7 @@ export default defineConfig({
         },
         ui: {
           router: (props) => {
-            return `/blog/${props.document._sys.filename}`;
+            return `${postsRoute}/${props.document._sys.filename}`;
           },
           filename: {
             slugify: (values) => {
