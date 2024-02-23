@@ -5,8 +5,7 @@ links:
   - label: About
     link: /about
   - label: Blog
-    link: /blog
+    link: /posts
   - label: Contact
     link: /contact
 ---
-

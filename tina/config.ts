@@ -1,7 +1,7 @@
 import { defineConfig } from 'tinacms';
 import type { Template } from 'tinacms';
 
-export const postsRoute = '/blog';
+export const postRoute = '/post';
 
 const slugify = (value = 'no-value') => {
   return `${value
@@ -261,7 +261,7 @@ export default defineConfig({
         },
         ui: {
           router: (props) => {
-            return `${postsRoute}/${props.document._sys.filename}`;
+            return `${postRoute}/${props.document._sys.filename}`;
           },
           filename: {
             slugify: (values) => {

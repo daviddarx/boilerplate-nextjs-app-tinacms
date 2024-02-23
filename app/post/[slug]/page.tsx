@@ -1,6 +1,6 @@
 import Post from '@/components/app/post';
 import client from '@/tina/__generated__/client';
-import { PostResult } from '@/tina/types';
+import { PostResult } from '@/types';
 import { notFound } from 'next/navigation';
 
 export const revalidate = 10;

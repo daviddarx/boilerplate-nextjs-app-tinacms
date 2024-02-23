@@ -17,3 +17,9 @@ export type PostResult = {
   variables: object;
   query: string;
 };
+
+export type PostsFilter = {
+  label: string;
+  url: string;
+  active: boolean;
+};

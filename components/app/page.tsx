@@ -4,10 +4,14 @@ import FeatureList from '@/components/content/feature-list';
 import Hero from '@/components/content/hero';
 import PostList from '@/components/content/post-list';
 import Navigation from '@/components/ui/navigation';
-import { PageResult, PostsResult } from '@/tina/types';
+import { PageResult, PostsFilter, PostsResult } from '@/types';
 import { useTina } from 'tinacms/dist/react';
 
-export default function Page(props: { pageProps: PageResult; postsProps?: PostsResult }) {
+export default function Page(props: {
+  pageProps: PageResult;
+  postsProps?: PostsResult;
+  filterProps?: PostsFilter[];
+}) {
   const pageData = useTina(props.pageProps);
   const { page, navigation } = pageData.data;
 
@@ -25,7 +29,14 @@ export default function Page(props: { pageProps: PageResult; postsProps?: PostsR
               return <FeatureList {...block} key={i} />;
             }
             case 'PageBlocksPostList': {
-              return <PostList blockProps={{ ...block }} postsProps={props.postsProps!} key={i} />;
+              return (
+                <PostList
+                  blockProps={{ ...block }}
+                  postsProps={props.postsProps!}
+                  filterProps={props.filterProps!}
+                  key={i}
+                />
+              );
             }
           }
         })}

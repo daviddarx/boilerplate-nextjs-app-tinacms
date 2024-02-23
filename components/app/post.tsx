@@ -2,7 +2,7 @@
 
 import CustomMarkdown from '../ui/custom-markdown';
 import Navigation from '@/components/ui/navigation';
-import { PostResult } from '@/tina/types';
+import { PostResult } from '@/types/';
 import Image from 'next/image';
 import { useTina } from 'tinacms/dist/react';
 import { tinaField } from 'tinacms/dist/react';
