@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={classNames('h-full w-full', font.className)}>
         <div className='lg:grid lg:grid-cols-2'>
           <Header />
-          <main className='p-gutter lg:px-0'>{children}</main>
+          <main className='p-gutter lg:px-0 lg:pr-gutter'>{children}</main>
         </div>
       </body>
     </html>

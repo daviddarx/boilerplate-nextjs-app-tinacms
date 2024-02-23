@@ -13,7 +13,7 @@ export default function PostList(props: {
   const posts = data.postConnection.edges;
 
   return (
-    <section className='pt-spacer-40 first:pt-0 lg:pr-gutter'>
+    <section>
       <div className='text-container'>
         {!props.blockProps.hideTitle && (
           <h2 data-tina-field={tinaField(props.blockProps, 'title')}>{props.blockProps.title}</h2>
@@ -26,7 +26,7 @@ export default function PostList(props: {
       </div>
 
       {posts && posts?.length > 0 && (
-        <ul>
+        <ul className='mt-gutter'>
           {posts.map((edge) => {
             const post = edge?.node;
 
@@ -37,7 +37,7 @@ export default function PostList(props: {
             return (
               <li key={post._sys.filename} className='border-t border-black py-gutter pr-gutter'>
                 <Link href={`${postsRoute}/${post._sys.filename}`} className='text-container'>
-                  <h2 data-tina-field={tinaField(post, 'title')}>{post.title}</h2>
+                  <h3 data-tina-field={tinaField(post, 'title')}>{post.title}</h3>
                   <div>{post.category.title}</div>
                 </Link>
               </li>

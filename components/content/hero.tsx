@@ -5,7 +5,7 @@ import { tinaField } from 'tinacms/dist/react';
 
 export default function Hero(props: PageBlocksHero) {
   return (
-    <section className='pt-spacer-40 first:pt-0 lg:pr-gutter'>
+    <section>
       <div className='text-container'>
         <h2 data-tina-field={tinaField(props, 'title')}>{props.title}</h2>
         {props.description && (

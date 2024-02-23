@@ -15,7 +15,7 @@ export default function PageComponent(props: { pageProps: PageResult; postsProps
     <div>
       <Navigation {...navigation} />
       <h1>{page.title}</h1>
-      <div className='my-spacer-120 flex flex-col gap-spacer-120 divide-y-2 divide-black'>
+      <div className='mt-spacer-120 flex flex-col gap-spacer-80'>
         {page.blocks?.map((block, i) => {
           switch (block?.__typename) {
             case 'PageBlocksHero': {
