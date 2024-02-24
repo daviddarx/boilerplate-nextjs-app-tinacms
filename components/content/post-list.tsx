@@ -58,10 +58,10 @@ export default function PostList(props: {
                 <li key={post._sys.filename} className='border-t border-black'>
                   <Link
                     href={`${postRoute}/${post._sys.filename}`}
-                    className='text-container block py-gutter'
+                    className='text-container flex gap-16 py-gutter lg:justify-between lg:gap-32'
                   >
                     <h3 data-tina-field={tinaField(post, 'title')}>{post.title}</h3>
-                    <div>{post.category.title}</div>
+                    <div className='font-bold uppercase'>{post.category.title}</div>
                   </Link>
                 </li>
               );

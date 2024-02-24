@@ -1,5 +1,6 @@
 import Page from '@/components/app/page';
 import client from '@/tina/__generated__/client';
+import { CategoryFilter } from '@/tina/__generated__/types';
 import { PageResult, PostsFilter } from '@/types/';
 import { notFound } from 'next/navigation';
 
@@ -53,7 +54,7 @@ export default async function ServerPage({ params }: { params: { slug?: string[]
   }
 
   if (hasPostListBlock) {
-    const postsResult = await client.queries.postConnection();
+    const categoryParams = params.slug![1];
     const categoryConnectionResult = await client.queries.categoryConnection();
 
     let postsFilters: PostsFilter[] = [
@@ -70,10 +71,26 @@ export default async function ServerPage({ params }: { params: { slug?: string[]
         return {
           label: node.title,
           url: `/${params.slug![0]}/${node._sys.filename}`,
-          active: node._sys.filename === params.slug![1],
+          active: node._sys.filename === categoryParams,
         };
       }),
     );
+
+    let postsCategoryQueryFilter: CategoryFilter = {};
+
+    if (categoryParams) {
+      postsCategoryQueryFilter = {
+        title: {
+          eq: categoryConnectionResult.data.categoryConnection.edges!.find(
+            (edge) => edge?.node?._sys.filename === categoryParams,
+          )?.node?.title,
+        },
+      };
+    }
+
+    const postsResult = await client.queries.postConnection({
+      filter: { category: { category: postsCategoryQueryFilter } },
+    });
 
     return (
       <Page
