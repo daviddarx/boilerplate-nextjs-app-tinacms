@@ -30,7 +30,7 @@ export default function PostList(props: {
 
       {posts && posts?.length > 0 && (
         <div className='mt-gutter'>
-          <ul className='flex gap-8'>
+          <ul className='flex flex-wrap gap-8'>
             {props.filterProps.map((filter, i) => {
               return (
                 <li key={i}>
