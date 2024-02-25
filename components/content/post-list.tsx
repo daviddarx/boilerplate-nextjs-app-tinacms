@@ -39,6 +39,7 @@ export default function PostList(props: {
                     className={classNames('button', {
                       'button--primary': filter.active,
                     })}
+                    scroll={false}
                   >
                     {filter.label}
                   </Link>

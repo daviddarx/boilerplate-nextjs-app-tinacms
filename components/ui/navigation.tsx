@@ -10,7 +10,12 @@ export default function Navigation(props: PageAndNavQuery['navigation']) {
         {props.links &&
           props.links.map((link) => (
             <li key={link!.link} data-tina-field={link && tinaField(link, 'label')}>
-              <ActiveLink href={link!.link} className='button' activeClassName='button--primary'>
+              <ActiveLink
+                href={link!.link}
+                className='button'
+                activeClassName='button--primary'
+                scroll={true}
+              >
                 {link?.label}
               </ActiveLink>
             </li>

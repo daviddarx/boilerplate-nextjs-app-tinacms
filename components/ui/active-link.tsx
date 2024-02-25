@@ -7,12 +7,14 @@ import { PropsWithChildren } from 'react';
 type ActiveLinkProps = LinkProps & {
   className: string;
   activeClassName: string;
+  scroll?: boolean;
 };
 
 export default function ActiveLink({
   children,
   className = '',
   activeClassName = '',
+  scroll = false,
   ...props
 }: PropsWithChildren<ActiveLinkProps>) {
   const currentRoute = usePathname();
@@ -24,7 +26,7 @@ export default function ActiveLink({
   }
 
   return (
-    <Link scroll={false} className={computedClass} {...props}>
+    <Link scroll={scroll} className={computedClass} {...props}>
       {children}
     </Link>
   );
