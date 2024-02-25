@@ -1,5 +1,6 @@
 import './globals.css';
 import Header from '@/components/layout/header';
+import StoreProvider from '@/store/store-provider';
 import classNames from 'classnames';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
@@ -13,13 +14,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={classNames('h-full w-full', font.className)}>
-        <div className='lg:grid lg:grid-cols-2'>
-          <Header />
-          <main className='p-gutter lg:px-0 lg:pr-gutter'>{children}</main>
-        </div>
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang='en'>
+        <body className={classNames('h-full w-full', font.className)}>
+          <div className='lg:grid lg:grid-cols-2'>
+            <Header />
+            <main className='p-gutter lg:px-0 lg:pr-gutter'>{children}</main>
+          </div>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
