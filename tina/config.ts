@@ -1,4 +1,4 @@
-import { defineConfig } from 'tinacms';
+import { Form, TinaCMS, defineConfig } from 'tinacms';
 import type { Template } from 'tinacms';
 
 export const postRoute = '/post';
@@ -268,6 +268,20 @@ export default defineConfig({
               return slugify(values.title);
             },
           },
+          beforeSubmit: async ({
+            form,
+            cms,
+            values,
+          }: {
+            form: Form;
+            cms: TinaCMS;
+            values: Record<string, any>;
+          }) => {
+            return {
+              ...values,
+              updatedAt: new Date(),
+            };
+          },
         },
         fields: [
           { name: 'title', label: 'Title', type: 'string', isTitle: true, required: true },
@@ -276,6 +290,15 @@ export default defineConfig({
             label: 'Created at',
             type: 'datetime',
             required: true,
+            ui: {
+              dateFormat: 'MMMM DD YYYY',
+              timeFormat: 'HH:mm',
+            },
+          },
+          {
+            name: 'updatedAt',
+            label: 'Updated at',
+            type: 'datetime',
             ui: {
               dateFormat: 'MMMM DD YYYY',
               timeFormat: 'HH:mm',
