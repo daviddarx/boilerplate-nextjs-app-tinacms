@@ -19,7 +19,7 @@ export default function ActiveLink({
 
   let computedClass = className;
 
-  if (props.href === currentRoute) {
+  if (props.href.toString().split('/')[1] === currentRoute.split('/')[1]) {
     computedClass += ` ${activeClassName}`;
   }
 
