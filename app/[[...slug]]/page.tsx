@@ -90,6 +90,8 @@ export default async function ServerPage({ params }: { params: { slug?: string[]
 
     const postsResult = await client.queries.postConnection({
       filter: { category: { category: postsCategoryQueryFilter } },
+      sort: 'createdAt',
+      last: 100,
     });
 
     return (

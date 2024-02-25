@@ -3,6 +3,7 @@
 import CustomMarkdown from '../ui/custom-markdown';
 import Navigation from '@/components/ui/navigation';
 import { PostResult } from '@/types/';
+import { formatDate } from '@/utils/core';
 import Image from 'next/image';
 import { useTina } from 'tinacms/dist/react';
 import { tinaField } from 'tinacms/dist/react';
@@ -10,11 +11,6 @@ import { tinaField } from 'tinacms/dist/react';
 export default function Post(props: PostResult) {
   const data = useTina(props);
   const { post, navigation } = data.data;
-  const date = new Intl.DateTimeFormat('de-CH', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(new Date(post.createdAt));
 
   return (
     <div>
@@ -24,7 +20,7 @@ export default function Post(props: PostResult) {
           {post.title}
         </h1>
         <div>
-          <span data-tina-field={tinaField(post, 'createdAt')}>{date}</span> -{' '}
+          <span data-tina-field={tinaField(post, 'createdAt')}>{formatDate(post.createdAt)}</span> -{' '}
           <span data-tina-field={tinaField(post, 'category')}>{post.category.title}</span>
         </div>
       </header>
