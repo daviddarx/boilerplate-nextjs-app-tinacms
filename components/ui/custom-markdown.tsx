@@ -11,8 +11,9 @@ const components: Components<{
 }> = {
   bold: (props) => <strong className='hover:blur-[1px]' {...props} />,
   img: (props) => {
+    console.log('image!', props);
     const url = props!.url;
-    const dimensions = url.split('?')[1]?.split('x'); // see formating in utils/tinas.ts > addImagesDimensions
+    const dimensions = props?.caption?.split('x'); // see formating in utils/tinas.ts > addImagesDimensions
     let width = 1920;
     let height = 1080;
     if (dimensions && dimensions.length > 1) {

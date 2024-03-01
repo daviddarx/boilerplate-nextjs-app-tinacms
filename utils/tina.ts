@@ -38,9 +38,8 @@ export const addImagesDimensions = async (obj: any): Promise<any> => {
           }
           // add dimensions for images in rich-text
         } else if (key === 'type' && obj[key] === 'img') {
-          const url = obj.url.split('?')[0];
-          const { width, height } = await getImageDimensions(url);
-          obj.url = `${url}?${width}x${height}`;
+          const { width, height } = await getImageDimensions(obj.url);
+          obj.caption = `${width}x${height}`;
         } else {
           await addImagesDimensions(obj[key]);
         }
