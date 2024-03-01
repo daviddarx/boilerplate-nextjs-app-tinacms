@@ -1,7 +1,6 @@
 'use client';
 
 import CustomMarkdown from '../ui/custom-markdown';
-import Navigation from '@/components/ui/navigation';
 import { PostResult } from '@/types/';
 import { formatDate } from '@/utils/core';
 import Image from 'next/image';
@@ -10,11 +9,10 @@ import { tinaField } from 'tinacms/dist/react';
 
 export default function Post(props: PostResult) {
   const data = useTina(props);
-  const { post, navigation } = data.data;
+  const { post } = data.data;
 
   return (
     <div>
-      <Navigation {...navigation} />
       <header className='text-container'>
         <h1 data-tina-field={tinaField(post, 'title')} className='h2'>
           {post.title}

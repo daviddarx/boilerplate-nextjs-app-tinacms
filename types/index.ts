@@ -1,7 +1,18 @@
-import { PageAndNavQuery, PostAndNavQuery, PostConnectionQuery } from '@/tina/__generated__/types';
+import {
+  NavigationQuery,
+  PageQuery,
+  PostConnectionQuery,
+  PostQuery,
+} from '@/tina/__generated__/types';
+
+export type NavigationResult = {
+  data: NavigationQuery;
+  variables: object;
+  query: string;
+};
 
 export type PageResult = {
-  data: PageAndNavQuery;
+  data: PageQuery;
   variables: object;
   query: string;
 };
@@ -13,7 +24,7 @@ export type PostsResult = {
 };
 
 export type PostResult = {
-  data: PostAndNavQuery;
+  data: PostQuery;
   variables: object;
   query: string;
 };

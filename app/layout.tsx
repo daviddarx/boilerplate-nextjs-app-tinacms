@@ -1,7 +1,9 @@
 import './globals.css';
 import Header from '@/components/layout/header';
+import Navigation from '@/components/ui/navigation';
 import translations from '@/content/translations';
 import StoreProvider from '@/store/store-provider';
+import client from '@/tina/__generated__/client';
 import classNames from 'classnames';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
@@ -13,7 +15,9 @@ export const metadata: Metadata = {
   description: translations.metaData.description,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const navigationResult = await client.queries.navigation({ relativePath: 'navigation.md' });
+
   return (
     <StoreProvider>
       <html lang='en'>
@@ -21,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className='lg:grid lg:grid-cols-2'>
             <Header />
             <main className='p-gutter lg:px-0 lg:pr-gutter'>{children}</main>
+            <Navigation {...navigationResult} />
           </div>
         </body>
       </html>

@@ -14,7 +14,7 @@ export async function generateMetadata({
   params: { slug?: string[] };
 }): Promise<Metadata> {
   let pageMdPath = params.slug ? params.slug[0] : 'home';
-  let pageResult = await client.queries.pageAndNav({
+  let pageResult = await client.queries.page({
     relativePath: `${pageMdPath}.mdx`,
   });
 
@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 
       params.push({ slug: [fileName] });
 
-      const pageResult = await client.queries.pageAndNav({
+      const pageResult = await client.queries.page({
         relativePath: `${fileName}.mdx`,
       });
 
@@ -61,7 +61,7 @@ export default async function ServerPage({ params }: { params: { slug?: string[]
   let pageMdPath = params.slug ? params.slug[0] : 'home';
 
   try {
-    pageResult = await client.queries.pageAndNav({
+    pageResult = await client.queries.page({
       relativePath: `${pageMdPath}.mdx`,
     });
     hasPostListBlock = pageResult.data.page.blocks?.some(
