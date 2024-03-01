@@ -1,4 +1,4 @@
-import { Form, TinaCMS, defineConfig } from 'tinacms';
+import { defineConfig } from 'tinacms';
 import type { Template } from 'tinacms';
 
 export const postRoute = '/post';
@@ -10,6 +10,16 @@ const slugify = (value = 'no-value') => {
     .normalize('NFD')
     .replace(/[^\w\s-]/g, '')
     .replace(/[\u0300-\u036f]/g, '')}`;
+};
+
+const loadImageDimensions = (src: string): Promise<{ width: number; height: number }> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      resolve({ width: img.width, height: img.height });
+    };
+    img.src = src;
+  });
 };
 
 const richTextTemplates: Template[] = [
@@ -69,6 +79,32 @@ export default defineConfig({
             slugify: (values) => {
               return slugify(values.title);
             },
+          },
+          beforeSubmit: async ({ values }: { values: Record<string, any> }) => {
+            console.log('submit----------');
+
+            await Promise.all(
+              values.blocks.map(async (block: any) => {
+                if (block.feature) {
+                  await Promise.all(
+                    block.feature.map(async (feature: any) => {
+                      if (feature.image) {
+                        console.log(feature.image);
+                        const { width, height } = await loadImageDimensions(feature.image);
+                        feature.imageWidth = width;
+                        feature.imageHeight = height;
+                        console.log('dimensions', width, height);
+                      }
+                    }),
+                  );
+                }
+              }),
+            );
+
+            console.log('submit', values);
+            return {
+              ...values,
+            };
           },
         },
         fields: [
@@ -158,6 +194,8 @@ export default defineConfig({
                     fields: [
                       { name: 'title', label: 'Title', type: 'string', required: true },
                       { name: 'image', label: 'Image', type: 'image' },
+                      { name: 'imageWidth', label: 'Image width', type: 'number' },
+                      { name: 'imageHeight', label: 'Image height', type: 'number' },
                       {
                         name: 'description',
                         label: 'Description',
@@ -268,15 +306,7 @@ export default defineConfig({
               return slugify(values.title);
             },
           },
-          beforeSubmit: async ({
-            form,
-            cms,
-            values,
-          }: {
-            form: Form;
-            cms: TinaCMS;
-            values: Record<string, any>;
-          }) => {
+          beforeSubmit: async ({ values }: { values: Record<string, any> }) => {
             return {
               ...values,
               updatedAt: new Date(),
