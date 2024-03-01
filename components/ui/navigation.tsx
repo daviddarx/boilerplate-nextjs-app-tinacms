@@ -9,7 +9,7 @@ export default function Navigation(props: NavigationResult) {
   const { navigation } = navigationData.data;
 
   return (
-    <nav className='mb-40 lg:fixed lg:bottom-0 lg:left-0 lg:mb-0 lg:p-gutter'>
+    <nav className='mb-40 p-gutter lg:fixed lg:bottom-0 lg:left-0 lg:mb-0'>
       <h2 className='sr-only'>Navigation</h2>
       <ul className='flex flex-wrap gap-spacer-16 lg:flex-col'>
         {navigation.links &&
