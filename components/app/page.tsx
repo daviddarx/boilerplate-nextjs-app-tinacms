@@ -5,6 +5,7 @@ import Hero from '@/components/content/hero';
 import PostList from '@/components/content/post-list';
 import { PageResult, PostsFilter, PostsResult } from '@/types';
 import { useTina } from 'tinacms/dist/react';
+import { tinaField } from 'tinacms/dist/react';
 
 export default function Page(props: {
   pageProps: PageResult;
@@ -16,7 +17,7 @@ export default function Page(props: {
 
   return (
     <div>
-      <h1>{page.title}</h1>
+      <h1 data-tina-field={tinaField(page, 'title')}>{page.title}</h1>
       <div className='my-spacer-120 flex flex-col gap-spacer-80'>
         {page.blocks?.map((block, i) => {
           switch (block?.__typename) {
