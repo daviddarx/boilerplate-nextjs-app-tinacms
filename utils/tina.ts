@@ -1,4 +1,4 @@
-import type { Template, TinaField } from 'tinacms';
+import { type Template, type TinaField, tinaTableTemplate } from 'tinacms';
 
 export const slugify = (value = 'no-value') => {
   return `${value
@@ -71,6 +71,7 @@ export const richTextTemplates: Template[] = [
       },
     ],
   },
+  tinaTableTemplate,
 ];
 
 export const imageFields: TinaField[] = [

@@ -117,6 +117,7 @@
       & ol,
       & address,
       & blockquote,
+      & table,
       a.button {
         @apply mb-spacer-20;
       }
@@ -168,6 +169,18 @@
           & div {
             @apply inline-block;
           }
+        }
+      }
+
+      & table {
+        @apply w-full;
+
+        & td {
+          @apply py-8 pr-20;
+        }
+
+        & tr:first-of-type {
+          @apply border-b border-black font-bold;
         }
       }
     }
