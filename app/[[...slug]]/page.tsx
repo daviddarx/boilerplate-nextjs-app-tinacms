@@ -1,10 +1,28 @@
 import Page from '@/components/app/page';
+import translations from '@/content/translations';
 import client from '@/tina/__generated__/client';
 import { CategoryFilter } from '@/tina/__generated__/types';
 import { PageResult, PostsFilter } from '@/types/';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export const revalidate = 10;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug?: string[] };
+}): Promise<Metadata> {
+  let pageMdPath = params.slug ? params.slug[0] : 'home';
+  let pageResult = await client.queries.pageAndNav({
+    relativePath: `${pageMdPath}.mdx`,
+  });
+
+  return {
+    title: translations.metaData.title(pageResult.data.page.title),
+    description: translations.metaData.description,
+  };
+}
 
 export async function generateStaticParams() {
   const pageConnectionResult = await client.queries.pageConnection();
