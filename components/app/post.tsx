@@ -27,7 +27,12 @@ export default function Post(props: PostResult) {
       <div className='mt-gutter'>
         {post.image && (
           <div data-tina-field={tinaField(post, 'image')}>
-            <Image src={post.image} alt={post.title} width={1920} height={1080} />
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={post.imageWidth || 1920}
+              height={post.imageHeight || 1080}
+            />
           </div>
         )}
         {post.body && (
