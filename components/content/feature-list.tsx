@@ -20,7 +20,12 @@ export default function FeatureList(props: PageBlocksFeatureList) {
           {props.feature?.map((feature, i) => (
             <li key={i} data-tina-field={tinaField(feature!, 'title')}>
               {feature?.image && (
-                <Image src={feature.image} alt={feature.title} width={1920} height={1080} />
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  width={feature.imageWidth || 1920}
+                  height={feature.imageHeight || 1080}
+                />
               )}
               <div className='text-container mt-spacer-24 pr-gutter'>
                 <h3>{feature?.title}</h3>

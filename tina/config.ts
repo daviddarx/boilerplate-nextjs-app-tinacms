@@ -1,40 +1,7 @@
-import { Form, TinaCMS, defineConfig } from 'tinacms';
-import type { Template } from 'tinacms';
+import { addImagesDimensions, imageFields, richTextTemplates, slugify } from '../utils/tina';
+import { defineConfig } from 'tinacms';
 
 export const postRoute = '/post';
-
-const slugify = (value = 'no-value') => {
-  return `${value
-    .toLowerCase()
-    .replace(/ /g, '-')
-    .normalize('NFD')
-    .replace(/[^\w\s-]/g, '')
-    .replace(/[\u0300-\u036f]/g, '')}`;
-};
-
-const richTextTemplates: Template[] = [
-  {
-    name: 'CTA',
-    label: 'CTA',
-    fields: [
-      {
-        name: 'url',
-        label: 'URL',
-        type: 'string',
-      },
-      {
-        name: 'label',
-        label: 'Label',
-        type: 'string',
-      },
-      {
-        name: 'blank',
-        label: 'External link',
-        type: 'boolean',
-      },
-    ],
-  },
-];
 
 export default defineConfig({
   branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || 'main',
@@ -69,6 +36,9 @@ export default defineConfig({
             slugify: (values) => {
               return slugify(values.title);
             },
+          },
+          beforeSubmit: async ({ values }: { values: Record<string, any> }) => {
+            return await addImagesDimensions(values);
           },
         },
         fields: [
@@ -157,7 +127,6 @@ export default defineConfig({
                     },
                     fields: [
                       { name: 'title', label: 'Title', type: 'string', required: true },
-                      { name: 'image', label: 'Image', type: 'image' },
                       {
                         name: 'description',
                         label: 'Description',
@@ -166,6 +135,7 @@ export default defineConfig({
                           component: 'textarea',
                         },
                       },
+                      ...imageFields,
                     ],
                   },
                 ],
@@ -268,17 +238,11 @@ export default defineConfig({
               return slugify(values.title);
             },
           },
-          beforeSubmit: async ({
-            form,
-            cms,
-            values,
-          }: {
-            form: Form;
-            cms: TinaCMS;
-            values: Record<string, any>;
-          }) => {
+          beforeSubmit: async ({ values }: { values: Record<string, any> }) => {
+            const valuesWithImageDimensions = await addImagesDimensions(values);
+
             return {
-              ...values,
+              ...valuesWithImageDimensions,
               updatedAt: new Date(),
             };
           },
@@ -316,8 +280,8 @@ export default defineConfig({
             collections: ['category'],
             required: true,
           },
-          { name: 'image', label: 'Image', type: 'image' },
           { name: 'body', label: 'Body', type: 'rich-text', templates: richTextTemplates },
+          ...imageFields,
         ],
       },
     ],
