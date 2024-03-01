@@ -27,12 +27,10 @@ export const addImageDimensions = async (obj: any): Promise<any> => {
     await Promise.all(
       keys.map(async (key: string) => {
         if (key === 'image') {
-          console.log('image', obj[key]);
           if (obj[key]) {
             const { width, height } = await getImageDimensions(obj[key]);
             obj.imageWidth = width;
             obj.imageHeight = height;
-            console.log('dimensions', width, height);
           } else {
             obj.imageWidth = 0;
             obj.imageHeight = 0;
