@@ -1,4 +1,4 @@
-import { addImageDimensions, imageFields, richTextTemplates, slugify } from '../utils/tina';
+import { addImagesDimensions, imageFields, richTextTemplates, slugify } from '../utils/tina';
 import { defineConfig } from 'tinacms';
 
 export const postRoute = '/post';
@@ -38,7 +38,7 @@ export default defineConfig({
             },
           },
           beforeSubmit: async ({ values }: { values: Record<string, any> }) => {
-            return await addImageDimensions(values);
+            return await addImagesDimensions(values);
           },
         },
         fields: [
@@ -239,7 +239,7 @@ export default defineConfig({
             },
           },
           beforeSubmit: async ({ values }: { values: Record<string, any> }) => {
-            const valuesWithImageDimensions = await addImageDimensions(values);
+            const valuesWithImageDimensions = await addImagesDimensions(values);
 
             return {
               ...valuesWithImageDimensions,

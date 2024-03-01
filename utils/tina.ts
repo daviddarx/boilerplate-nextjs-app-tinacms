@@ -19,13 +19,14 @@ export const getImageDimensions = (src: string): Promise<{ width: number; height
   });
 };
 
-export const addImageDimensions = async (obj: any): Promise<any> => {
+export const addImagesDimensions = async (obj: any): Promise<any> => {
   if (Array.isArray(obj)) {
-    return Promise.all(obj.map(async (item: any) => addImageDimensions(item)));
+    return Promise.all(obj.map(async (item: any) => addImagesDimensions(item)));
   } else if (obj && typeof obj === 'object') {
     const keys = Object.keys(obj);
     await Promise.all(
       keys.map(async (key: string) => {
+        // add dimensions for image fields
         if (key === 'image') {
           if (obj[key]) {
             const { width, height } = await getImageDimensions(obj[key]);
@@ -35,8 +36,13 @@ export const addImageDimensions = async (obj: any): Promise<any> => {
             obj.imageWidth = 0;
             obj.imageHeight = 0;
           }
+          // add dimensions for images in rich-text
+        } else if (key === 'type' && obj[key] === 'img') {
+          const url = obj.url.split('?')[0];
+          const { width, height } = await getImageDimensions(url);
+          obj.url = `${url}?${width}x${height}`;
         } else {
-          await addImageDimensions(obj[key]);
+          await addImagesDimensions(obj[key]);
         }
       }),
     );
