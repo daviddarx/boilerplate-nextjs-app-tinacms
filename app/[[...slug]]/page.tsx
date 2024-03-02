@@ -1,4 +1,5 @@
 import Page from '@/components/app/page';
+import PageWrapper from '@/components/layout/page-wrapper';
 import translations from '@/content/translations';
 import client from '@/tina/__generated__/client';
 import { CategoryFilter } from '@/tina/__generated__/types';
@@ -113,13 +114,19 @@ export default async function ServerPage({ params }: { params: { slug?: string[]
     });
 
     return (
-      <Page
-        pageProps={{ ...pageResult! }}
-        postsProps={{ ...postsResult }}
-        filterProps={postsFilters}
-      />
+      <PageWrapper>
+        <Page
+          pageProps={{ ...pageResult! }}
+          postsProps={{ ...postsResult }}
+          filterProps={postsFilters}
+        />
+      </PageWrapper>
     );
   } else {
-    return <Page pageProps={{ ...pageResult! }} />;
+    return (
+      <PageWrapper>
+        <Page pageProps={{ ...pageResult! }} />
+      </PageWrapper>
+    );
   }
 }

@@ -103,7 +103,7 @@
 
 @layer components {
   .button {
-    @apply inline-block rounded-full border border-black px-16 py-4 font-bold uppercase;
+    @apply inline-block rounded-full border border-black px-16 py-4 font-bold uppercase transition-colors duration-200 ease-out;
   }
 
   .button--primary {
