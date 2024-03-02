@@ -1,7 +1,7 @@
 'use client';
 
-import CustomMarkdown from '../ui/custom-markdown';
 import Footer from '@/components/layout/footer';
+import CustomMarkdown from '@/components/ui/custom-markdown';
 import { PostResult } from '@/types/';
 import { formatDate } from '@/utils/core';
 import Image from 'next/image';
