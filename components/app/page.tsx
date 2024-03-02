@@ -3,6 +3,7 @@
 import FeatureList from '@/components/content/feature-list';
 import Hero from '@/components/content/hero';
 import PostList from '@/components/content/post-list';
+import Footer from '@/components/layout/footer';
 import { PageResult, PostsFilter, PostsResult } from '@/types';
 import { useTina } from 'tinacms/dist/react';
 import { tinaField } from 'tinacms/dist/react';
@@ -40,6 +41,7 @@ export default function Page(props: {
           }
         })}
       </div>
+      <Footer />
     </div>
   );
 }

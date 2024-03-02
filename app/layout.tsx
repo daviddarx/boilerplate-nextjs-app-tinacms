@@ -1,6 +1,6 @@
 import './globals.css';
 import Header from '@/components/layout/header';
-import Navigation from '@/components/ui/navigation';
+import Navigation from '@/components/layout/navigation';
 import translations from '@/content/translations';
 import StoreProvider from '@/store/store-provider';
 import client from '@/tina/__generated__/client';

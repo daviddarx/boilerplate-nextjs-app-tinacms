@@ -1,6 +1,7 @@
 'use client';
 
 import CustomMarkdown from '../ui/custom-markdown';
+import Footer from '@/components/layout/footer';
 import { PostResult } from '@/types/';
 import { formatDate } from '@/utils/core';
 import Image from 'next/image';
@@ -39,6 +40,7 @@ export default function Post(props: PostResult) {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
