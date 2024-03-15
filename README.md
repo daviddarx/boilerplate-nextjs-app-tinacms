@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Add your [Tina Cloud ID & Token](https://app.tina.io/) in `cp .env.example .env`.
+Hit `cp .env.example .env` and add your [Tina Cloud ID & Token](https://app.tina.io/).
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
