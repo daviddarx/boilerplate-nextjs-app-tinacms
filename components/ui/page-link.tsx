@@ -1,8 +1,10 @@
 'use client';
 
+import { uiActions } from '@/store';
 import Link, { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PropsWithChildren } from 'react';
+import { useDispatch } from 'react-redux';
 
 type PageLinkProps = LinkProps & {
   className?: string;
@@ -18,6 +20,7 @@ export default function PageLink({
   ...props
 }: PropsWithChildren<PageLinkProps>) {
   const currentRoute = usePathname();
+  const dispatch = useDispatch();
 
   let computedClass = className;
 
@@ -25,8 +28,18 @@ export default function PageLink({
     computedClass += ` ${activeClassName}`;
   }
 
+  const handleClick = () => {
+    if (scrollToTop === false) {
+      dispatch(uiActions.setScrollToTopOnPageChange(false));
+
+      setTimeout(() => {
+        dispatch(uiActions.setScrollToTopOnPageChange(true));
+      }, 100);
+    }
+  };
+
   return (
-    <Link scroll={scrollToTop} className={computedClass} {...props}>
+    <Link onClick={handleClick} scroll={scrollToTop} className={computedClass} {...props}>
       {children}
     </Link>
   );
