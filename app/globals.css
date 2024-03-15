@@ -85,6 +85,11 @@
   .h6 {
     @apply text-xl xl:text-2xl;
   }
+
+  ::selection {
+    @apply bg-black text-white;
+    text-shadow: none;
+  }
 }
 
 @layer utilities {
