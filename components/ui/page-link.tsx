@@ -4,19 +4,19 @@ import Link, { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
-type ActiveLinkProps = LinkProps & {
-  className: string;
-  activeClassName: string;
-  scroll?: boolean;
+type PageLinkProps = LinkProps & {
+  className?: string;
+  activeClassName?: string;
+  scrollToTop?: boolean;
 };
 
-export default function ActiveLink({
+export default function PageLink({
   children,
   className = '',
   activeClassName = '',
-  scroll = false,
+  scrollToTop = true,
   ...props
-}: PropsWithChildren<ActiveLinkProps>) {
+}: PropsWithChildren<PageLinkProps>) {
   const currentRoute = usePathname();
 
   let computedClass = className;
@@ -26,7 +26,7 @@ export default function ActiveLink({
   }
 
   return (
-    <Link scroll={scroll} className={computedClass} {...props}>
+    <Link scroll={scrollToTop} className={computedClass} {...props}>
       {children}
     </Link>
   );

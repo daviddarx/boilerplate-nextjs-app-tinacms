@@ -1,10 +1,10 @@
 import CustomMarkdown from '@/components/ui/custom-markdown';
+import PageLink from '@/components/ui/page-link';
 import { PageBlocksPostList } from '@/tina/__generated__/types';
 import { postRoute } from '@/tina/config';
 import { PostsFilter, PostsResult } from '@/types/';
 import { formatDate } from '@/utils/core';
 import classNames from 'classnames';
-import Link from 'next/link';
 import { tinaField, useTina } from 'tinacms/dist/react';
 
 export default function PostList(props: {
@@ -34,15 +34,15 @@ export default function PostList(props: {
             {props.filterProps.map((filter, i) => {
               return (
                 <li key={i}>
-                  <Link
+                  <PageLink
                     href={filter.url}
                     className={classNames('button', {
                       'button--primary': filter.active,
                     })}
-                    scroll={false}
+                    scrollToTop={false}
                   >
                     {filter.label}
-                  </Link>
+                  </PageLink>
                 </li>
               );
             })}
@@ -58,7 +58,7 @@ export default function PostList(props: {
 
               return (
                 <li key={post._sys.filename} className='border-t border-black'>
-                  <Link
+                  <PageLink
                     href={`${postRoute}/${post._sys.filename}`}
                     className='flex flex-col gap-8 py-gutter lg:flex-row lg:items-center lg:justify-between lg:gap-32'
                   >
@@ -67,7 +67,7 @@ export default function PostList(props: {
                       <span className='font-bold uppercase'>{post.category.title}</span> –
                       <span>{formatDate(post.createdAt)}</span>
                     </div>
-                  </Link>
+                  </PageLink>
                 </li>
               );
             })}
